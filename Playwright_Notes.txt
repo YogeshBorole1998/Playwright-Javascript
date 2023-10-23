@@ -1,0 +1,342 @@
+◾Official Playright Website : https://playwright.dev/docs/intro
+[Read official doc for more detail information.]
+
+◾Installations : https://playwright.dev/docs/intro
+
+◾To Run the cases : https://playwright.dev/docs/test-cli
+npx playwrite test : Runs the end-to-end tests
+npx playwright test --headed
+npx playwright test --ui : Start the interactive UI mode
+npx playwright test --project=chromium: Runs the tests only on Desktop Chrome
+npx playwright test example: Runs the tests in specific file
+npx playwright test --debug: Runs the tests in debug mode.
+npx playwright codegen: Auto generate tests with codegen - recording
+npx playwright show-report : to see reports
+npx playwright test HomePageTest --project=chromium
+npx playwright test HomePageTest --project=chromium --headed
+npx playwright test HomePageTest --project=chromium --headed --debug
+
+◾To Record the cases : 
+npx playwright codegen --help
+npx playwright codegen -o tests/recordedTests.spec.js : create a file whatever we given & store recorded data in it 
+npx playwright codegen --target javascript : To sepecify particular language to recode the code. js is default
+npx playwright codegen --browser chromium : particular browser
+npx playwright codegen --device "iPhone 13" : particular device
+npx playwright codegen --viewport-size "1280, 720" : specific browser window resolution or size x & y axis
+
+◾Locators : https://playwright.dev/docs/locators
+1. page.getByRole() to locate by explicit and implicit accessibility attributes.
+2. page.getByText() to locate by text content.
+3. page.getByLabel() to locate a form control by associated label's text.
+4. page.getByPlaceholder() to locate an input by placeholder.
+5. page.getByAltText() to locate an element, usually image, by its text alternative.
+6. page.getByTitle() to locate an element by its title attribute.
+7. page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
+
+◾Annotations : https://playwright.dev/docs/test-annotations
+1. test.skip() marks the test as irrelevant. Playwright Test does not run such a test. Use this annotation when the test is not applicable in some configuration.
+2. test.fail() marks the test as failing. Playwright Test will run this test and ensure it does indeed fail. If the test does not fail, Playwright Test will complain.
+3. test.fixme() marks the test as failing. Playwright Test will not run this test, as opposed to the fail annotation. Use fixme when running the test is slow or crashes.
+4. test.slow() marks the test as slow and triples the test timeout.
+5. test.only() only that particular testcase will run. If you add .only for 2 tests then 2 cases will run
+
+◾Handling Inputs : https://playwright.dev/docs/input
+◾Handling Dialogs : https://playwright.dev/docs/dialogs
+◾Handling Frames : https://playwright.dev/docs/frames
+◾Assertions : https://playwright.dev/docs/test-assertions
+
+1. Auto-retrying assertions :
+await expect(locator).toBeAttached()	Element is attached
+await expect(locator).toBeChecked()	Checkbox is checked
+await expect(locator).toBeDisabled()	Element is disabled
+await expect(locator).toBeEditable()	Element is editable
+await expect(locator).toBeEmpty()	Container is empty
+await expect(locator).toBeEnabled()	Element is enabled
+await expect(locator).toBeFocused()	Element is focused
+await expect(locator).toBeHidden()	Element is not visible
+await expect(locator).toBeInViewport()	Element intersects viewport
+await expect(locator).toBeVisible()	Element is visible
+await expect(locator).toContainText()	Element contains text
+await expect(locator).toHaveAttribute()	Element has a DOM attribute
+await expect(locator).toHaveClass()	Element has a class property
+await expect(locator).toHaveCount()	List has exact number of children
+await expect(locator).toHaveCSS()	Element has CSS property
+await expect(locator).toHaveId()	Element has an ID
+await expect(locator).toHaveJSProperty()	Element has a JavaScript property
+await expect(locator).toHaveScreenshot()	Element has a screenshot
+await expect(locator).toHaveText()	Element matches text
+await expect(locator).toHaveValue()	Input has a value
+await expect(locator).toHaveValues()	Select has options selected
+await expect(page).toHaveScreenshot()	Page has a screenshot
+await expect(page).toHaveTitle()	Page has a title
+await expect(page).toHaveURL()	Page has a URL
+await expect(response).toBeOK()	Response has an OK status
+
+2. Non-retrying assertions : 
+expect(value).toBe()	Value is the same
+expect(value).toBeCloseTo()	Number is approximately equal
+expect(value).toBeDefined()	Value is not undefined
+expect(value).toBeFalsy()	Value is falsy, e.g. false, 0, null, etc.
+expect(value).toBeGreaterThan()	Number is more than
+expect(value).toBeGreaterThanOrEqual()	Number is more than or equal
+expect(value).toBeInstanceOf()	Object is an instance of a class
+expect(value).toBeLessThan()	Number is less than
+expect(value).toBeLessThanOrEqual()	Number is less than or equal
+expect(value).toBeNaN()	Value is NaN
+expect(value).toBeNull()	Value is null
+expect(value).toBeTruthy()	Value is truthy, i.e. not false, 0, null, etc.
+expect(value).toBeUndefined()	Value is undefined
+expect(value).toContain()	String contains a substring
+expect(value).toContain()	Array or set contains an element
+expect(value).toContainEqual()	Array or set contains a similar element
+expect(value).toEqual()	Value is similar - deep equality and pattern matching
+expect(value).toHaveLength()	Array or string has length
+expect(value).toHaveProperty()	Object has a property
+expect(value).toMatch()	String matches a regular expression
+expect(value).toMatchObject()	Object contains specified properties
+expect(value).toStrictEqual()	Value is similar, including property types
+expect(value).toThrow()	Function throws an error
+expect(value).any()	Matches any instance of a class/primitive
+expect(value).anything()	Matches antyhing
+expect(value).arrayContaining()	Array contains specific elements
+expect(value).closeTo()	Number is approximately equal
+expect(value).objectContaining()	Object contains specific properties
+expect(value).stringContaining()	String contains a substring
+expect(value).stringMatching()	String matches a regular expression
+
+◾Hooks : https://playwright.dev/docs/api/class-test
+1. Whenever we are writing hooks in test file we should not pass page fixture in tests bcz we already created page instance.
+2. Whenever we are writing hooks in test file we want to make sure in config file this paramater should be : fullyParallel: false
+
+◾Keyboard actions : https://playwright.dev/docs/api/class-keyboard
+◾Mouse Actions : https://playwright.dev/docs/input#mouse-click
+◾Test Recording : https://playwright.dev/docs/codegen
+
+◾Recording Videos : https://playwright.dev/docs/videos
+# Playwright Test can record videos for your tests, controlled by the video option in your Playwright config. By default videos are off.
+# If we want to record videos :(below 4 things will be same for screenshot also)
+# Video files will appear in the test output directory, typically test-results.
+
+A. 'off' - Do not record video.
+B. 'on' - Record video for each test.
+C. 'retain-on-failure' - Record video for each test, but remove all videos from successful test runs.
+D. 'on-first-retry' - Record video only when retrying a test for the first time.
+ 
+import { defineConfig } from '@playwright/test';
+export default defineConfig({
+  use: {
+    video: 'on',
+  },
+});
+
+◾Take Screenshots : https://playwright.dev/docs/screenshots
+If in config file : you write sceeenshot : 'on' then it will capture sc every time when & whichever test case we run & that will be the part of report & saved in a test-results folder. (Above 4 things will be same for screenshot also i.e. 'on', 'off', ...etc.)
+
+use: {
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    // baseURL: 'http://127.0.0.1:3000',
+
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: 'on-first-retry',
+    screenshot: 'on',
+  },
+
+◾Recording a trace : https://playwright.dev/docs/trace-viewer
+To View Trace : Run the test --> npx playwright show-trace test-results\traceViewer-Viewing-Traces-https-playwright-dev-docs-trace-viewer-chromium\trace.zip
+
+On the Trace window we are able to see : actions, hooks, metadata, locators, screenshots, Snapshots, calls, logs, errors, console, network, source, attachement if any, etc. 
+1. Recording a trace locally : 
+To record a trace during development mode set the --trace flag to on when running your tests.
+
+npx playwright test --trace on
+
+You can then open the HTML report and click on the trace icon to open the trace.
+
+npx playwright show-report
+
+2. Recording a trace on CI : 
+Available options to record a trace:
+
+'on-first-retry' - Record a trace only when retrying a test for the first time.
+'on-all-retries' - Record traces for all test retries.
+'off' - Do not record a trace.
+'on' - Record a trace for each test. (not recommended as it's performance heavy)
+'retain-on-failure' - Record a trace for each test, but remove it from successful test runs.
+You can also use trace: 'retain-on-failure' if you do not enable retries but still want traces for failed tests.
+
+playwright.config.ts ==>
+
+import { defineConfig } from '@playwright/test';
+export default defineConfig({
+  retries: 1,
+  use: {
+    trace: 'on-first-retry',
+  },
+});
+
+◾Tag Tests : https://playwright.dev/docs/test-annotations#tag-tests
+Bug for this concept : https://github.com/microsoft/playwright/issues/9667
+Sometimes you want to tag your tests as @fast or @slow and only run the tests that have the certain tag. We recommend that you use the --grep and --grep-invert command line flags for that.
+
+You will then be able to run only that test :
+
+npx playwright test --grep @fast 
+Or if you want the opposite, you can skip the tests with a certain tag :
+
+npx playwright test --grep-invert @slow
+
+To run tests containing either tag (logical OR operator):
+
+npx playwright test --grep "@fast|@slow"
+
+[You can give any tags like @smoke, @sanity, etc etc.]
+
+Solution On Bug : 
+1. npx playwright test tags --project chromium --grep "@sanity" 
+2. npx playwright test tags --project chromium --grep-invert "@regression"
+3. npx playwright test tags --project chromium --grep "@sanity@regression"
+4. npx playwright test tags --project chromium --grep "@sanity" --grep-invert "@regression": If we want to run only sanity tag cases
+5. npx playwright test tags --project chromium --grep "@regression" --grep-invert "@sanity": If we want to run only regression tag cases
+
+◾Page Object Model Pattern : https://playwright.dev/docs/pom
+Large test suites can be structured to optimize ease of authoring and maintenance. Page object models are one such approach to structure your test suite.
+
+A page object represents a part of your web application. An e-commerce web application might have a home page, a listings page and a checkout page. Each of them can be represented by page object models.
+
+Page objects simplify authoring by creating a higher-level API which suits your application and simplify maintenance by capturing element selectors in one place and create reusable code to avoid repetition.
+
+◾VS Code Extension Detail : https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright
+◾Handle Multiple pages Or Windows : https://playwright.dev/docs/pages
+◾Reporters : https://playwright.dev/docs/test-reporters
+If we want to see different reports then add config accordingly OR run commands: 
+
+1. npx playwright test --reporter=line OR npx playwright test reporters --reporter=line --project chromium : 
+It prints a line for each test being run. It uses a single line to report last finished test, and prints failures when they occur. Line reporter is useful for large test suites where it shows the progress but does not spam the output by listing all the tests.
+e.g. 3 passed (9.3s)
+
+2. npx playwright test --reporter=list OR npx playwright test reporters --reporter=list --project chromium --headed :
+It prints a line for each test being run & List reporter is default.
+e.g. 
+  ✓  1 [chromium] › reporters.spec.js:3:1 › Test-1 (2.8s)
+  ✓  2 [chromium] › reporters.spec.js:8:1 › Test-2 (1.5s)
+  ✓  3 [chromium] › reporters.spec.js:13:1 › Test-3 (2.1s)
+
+3. npx playwright test --reporter=dot OR npx playwright test reporters --reporter=dot --project chromium :
+Dot reporter is very concise - it only produces a single character per successful test run.
+shows green dot for passed cases & capital F for failed cases.
+e.g. ···
+
+4. npx playwright test --reporter=html OR npx playwright test reporters --reporter=html --project chromium : 
+HTML reporter produces a self-contained folder that contains report for the test run that can be served as a web page.
+By default, HTML report is opened automatically if some of the tests failed. You can control this behavior via the open property in the Playwright config.
+html report will generate folder named as playwright-report & inside that index.html file.
+
+5. npx playwright show-report : A quick way of opening the last html test run report.
+
+6. npx playwright test --reporter=blob OR npx playwright test reporters --reporter=blob --project chromium : 
+Blob reports contain all the details about the test run and can be used later to produce any other report. Their primary function is to facilitate the merging of reports from sharded tests.
+It will create one folder named as blob-report & create file name ad report.zip.
+
+7. npx playwright test --reporter=json OR npx playwright test reporters --reporter=json --project chromium : 
+JSON reporter produces an object with all information about the test run. 
+Above command will generate json report on terminal itself.
+
+8. npx playwright test reporters --reporter=junit --project chromium 
+JUnit reporter produces a JUnit-style xml report.
+Above command will generate json report on terminal itself.
+
+9. If we want multiple reports then we want to do configurations in playwright.config file like below : 
+reporter: [['list'],
+	   ['html'],
+	   ['junit', { outputFile: 'results.xml' }],
+           ['json', { outputFile: 'results.json' }]
+	  ],
+
+◾ How to Generate Allure Reports : https://www.npmjs.com/package/allure-playwright
+1. Installation of "allure-playwright" module : 
+npm i -D @playwright/test allure-playwright
+
+2. Installing allure command line : 
+npm install -g allure-commandline --save-dev
+
+OR 
+sudo npm install -g allure-commandline --save-dev
+
+3. playwriht.config.js :
+Either add allure-playwright into playwright.config.js :
+ 
+{
+  reporter: "allure-playwright";
+}
+
+OR Pass the same value via config file :
+{
+  reporter: [["line"], ["allure-playwright"]];
+}
+
+OR Pass the same value via command line :
+npx playwright test --reporter=line,allure-playwright
+
+4. Run the Tests: 
+just run below command in terminal after adding above code in config file : 
+npx playwright test tests/Reporters.spec.js
+
+Specify location for allure results:
+set ALLURE_RESULTS_DIR=my-allure-results
+npx playwright test --reporter=line,allure-playwright
+
+5. Generate Allure Report : 
+allure generate my-allure-results -o allure-report --clean
+
+6. Open Allure Report :
+allure open allure-report
+
+◾ How To Retry Failed Test Cases | Retries and Test Flakiness : https://playwright.dev/docs/test-retries
+1. we want to add some lines in playwright.config.js file :
+ 
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  // Give failing tests 3 retry attempts
+  retries: 3,
+});
+
+2. Playwright Test will categorize tests as follows:
+"passed" - tests that passed on the first run.
+"flaky" - tests that failed on the first run, but passed when retried then 
+"failed" - tests that failed on the first run and failed all retries
+
+3. npx playwright test retryTest --project=chromium --headed --retries=1 :
+If we interupt the testcase while running first time then second time it will run again & in report it will seen in report under flaky section.
+
+◾ Rest API Testing | HTTP Requests |Get,Post,Put & Delete : 
+1. 
+Request Name : GET 
+URI: https://reqres.in/api/users?page=2
+Request Payload : NA
+Response Payload : 
+Status Code : 200
+
+Imp: Make sure when you writing above cases in playwrite.config.js we want to make fullyParallel as false. because we want to execute test case serially like order wll be get user, create , update & then delete. 
+While creating we will get one UserId , on that only we can proceed further & done some other things.
+
+
+
+◾
+◾
+◾◾◾◾◾◾◾◾◾◾◾◾◾◾◾◾
+
+
+
+
+◾Notes : 
+
+
+
+
+
+
+ 
+
+
+
